@@ -2,111 +2,148 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-black text-white scroll-smooth">
 
       {/* NAVBAR */}
-      <nav className="fixed top-0 w-full bg-black/70 backdrop-blur z-50 px-6 md:px-16 py-4 flex justify-between">
-        <h1 className="font-bold">Chandu</h1>
-        <div className="space-x-4 text-sm">
+      <nav className="fixed w-full flex justify-between px-6 md:px-16 py-4 bg-black/70 backdrop-blur z-50">
+        <h1 className="font-bold text-lg">Chandu</h1>
+        <div className="space-x-6 hidden md:block">
           <a href="#about">About</a>
-          <a href="#skills">Skills</a>
+          <a href="#services">Services</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 px-6 md:px-16">
+      <section className="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-16 gap-12">
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center md:text-left"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold">
-            Hi, I'm Chandu 👋
+        {/* LEFT */}
+        <div>
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            Hi, I'm <span className="text-blue-500">Chandu</span>
           </h1>
-          <p className="mt-4 text-gray-400 text-lg">
-            Java Developer | Frontend Enthusiast
-          </p>
-        </motion.div>
 
-        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}>
+          <h2 className="text-2xl mt-4 text-blue-400">
+            <Typewriter
+              words={[
+                "Java Developer",
+                "Frontend Developer",
+                "Problem Solver"
+              ]}
+              loop
+              cursor
+            />
+          </h2>
+
+          <p className="mt-6 text-gray-400 max-w-lg">
+            I build modern web applications and solve real-world problems using Java and frontend technologies.
+          </p>
+
+          <div className="mt-8 flex gap-4">
+            <a href="/resume.pdf" download>
+              <button className="px-6 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+                Download CV
+              </button>
+            </a>
+
+            <a href="#projects">
+              <button className="px-6 py-3 border border-gray-600 rounded-lg hover:bg-gray-800 transition">
+                View Work
+              </button>
+            </a>
+          </div>
+        </div>
+
+        {/* RIGHT IMAGE */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+        >
           <Image
             src="/profile.png"
             alt="Profile"
-            width={200}
-            height={200}
+            width={300}
+            height={300}
             className="rounded-full border border-gray-700"
           />
         </motion.div>
+
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-20 px-6 md:px-16 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-semibold mb-4">About</h2>
+      <section id="about" className="py-24 px-6 md:px-16 text-center max-w-3xl mx-auto">
+        <h2 className="text-4xl font-bold mb-6">About Me</h2>
         <p className="text-gray-400">
-          I am a Computer Science student passionate about building web applications
-          and solving real-world problems using Java and modern technologies.
+          I am a passionate Computer Science student focused on building scalable applications and solving problems efficiently.
         </p>
       </section>
 
-      {/* SKILLS */}
-      <section id="skills" className="py-20 px-6 md:px-16">
-        <h2 className="text-3xl font-semibold mb-6 text-center">Skills</h2>
+      {/* SERVICES */}
+      <section id="services" className="py-24 px-6 md:px-16 text-center">
+        <h2 className="text-4xl font-bold mb-12">Services</h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          {["Java","Python","JavaScript","SQL","HTML","CSS","React","Git"].map((skill, i) => (
-            <motion.div
-              key={skill}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-gray-900 p-4 rounded-lg text-center hover:scale-105 transition"
-            >
-              {skill}
-            </motion.div>
-          ))}
+        <div className="grid md:grid-cols-3 gap-6">
+
+          <div className="bg-gray-900 p-8 rounded-xl hover:scale-105 transition">
+            <h3 className="text-xl font-bold">Web Development</h3>
+            <p className="text-gray-400 mt-3">
+              Building responsive and modern websites.
+            </p>
+          </div>
+
+          <div className="bg-gray-900 p-8 rounded-xl hover:scale-105 transition">
+            <h3 className="text-xl font-bold">Machine Learning</h3>
+            <p className="text-gray-400 mt-3">
+              Creating intelligent systems with data.
+            </p>
+          </div>
+
+          <div className="bg-gray-900 p-8 rounded-xl hover:scale-105 transition">
+            <h3 className="text-xl font-bold">UI Design</h3>
+            <p className="text-gray-400 mt-3">
+              Designing clean and user-friendly interfaces.
+            </p>
+          </div>
+
         </div>
       </section>
 
       {/* PROJECTS */}
-      <section id="projects" className="py-20 px-6 md:px-16">
-        <h2 className="text-3xl font-semibold mb-6 text-center">Projects</h2>
+      <section id="projects" className="py-24 px-6 md:px-16">
+        <h2 className="text-4xl font-bold text-center mb-12">Projects</h2>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8">
 
-          <motion.div whileHover={{ scale: 1.03 }} className="bg-gray-900 p-6 rounded-lg">
+          <div className="bg-gray-900 p-6 rounded-xl hover:scale-105 transition">
             <Image src="/project1.png" alt="Project" width={500} height={300} className="rounded mb-4"/>
-            <h3 className="text-xl font-bold">Project One</h3>
+            <h3 className="text-xl font-bold">Fraud Detection</h3>
             <p className="text-gray-400 mt-2">
-              Dummy project description. Replace later.
+              ML model detecting fraud with high accuracy.
             </p>
-          </motion.div>
+            <button className="mt-4 text-blue-500">Read More →</button>
+          </div>
 
-          <motion.div whileHover={{ scale: 1.03 }} className="bg-gray-900 p-6 rounded-lg">
+          <div className="bg-gray-900 p-6 rounded-xl hover:scale-105 transition">
             <Image src="/project2.png" alt="Project" width={500} height={300} className="rounded mb-4"/>
-            <h3 className="text-xl font-bold">Project Two</h3>
+            <h3 className="text-xl font-bold">AgriDirect</h3>
             <p className="text-gray-400 mt-2">
-              Dummy project description. Replace later.
+              E-commerce platform for farmers.
             </p>
-          </motion.div>
+            <button className="mt-4 text-blue-500">Read More →</button>
+          </div>
 
         </div>
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="py-20 text-center">
-        <h2 className="text-3xl font-semibold mb-4">Contact</h2>
-
-        <div className="text-gray-400 space-y-2">
-          <p>Email: example@gmail.com</p>
-          <p>GitHub: github.com/username</p>
-        </div>
+      <section id="contact" className="py-24 text-center">
+        <h2 className="text-4xl font-bold mb-6">Contact</h2>
+        <p className="text-gray-400">example@gmail.com</p>
       </section>
 
       {/* FOOTER */}
